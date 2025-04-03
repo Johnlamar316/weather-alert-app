@@ -5,6 +5,7 @@ import AlertDataTable from 'components/AlertDataTable';
 import Background from 'components/Background';
 import Logo from 'components/Logo';
 import FilterPanel from 'components/FilterPanel';
+import PageWrapper from 'components/PageWrapper';
 
 /**
  * `Home` is the main dashboard component of the Weather Alerts App.
@@ -37,20 +38,22 @@ const Home = () => {
         type={'video'}
         src={'https://weatherappinterviewbucket.s3.eu-west-2.amazonaws.com/background-img.mp4'}
       />
-      <Container sx={{ mt: 4 }}>
-        {/* Logo */}
-        <Logo />
-        {/* Component for filters (e.g. severity, status, etc.) */}
-        <FilterPanel onChange={(value: Record<string, string>) => setFilters(value)} />
-        {/* Shows error message if fetching data failed */}
-        {error && (
-          <Typography role="alert" color="error">
-            Failed to load alerts.
-          </Typography>
-        )}
-        {/* Display fetched alerts or loading state */}
-        <AlertDataTable alerts={data?.features || []} loading={isLoading} />
-      </Container>
+      <PageWrapper>
+        <Container sx={{ mt: 4 }}>
+          {/* Logo */}
+          <Logo />
+          {/* Component for filters (e.g. severity, status, etc.) */}
+          <FilterPanel onChange={(value: Record<string, string>) => setFilters(value)} />
+          {/* Shows error message if fetching data failed */}
+          {error && (
+            <Typography role="alert" color="error">
+              Failed to load alerts.
+            </Typography>
+          )}
+          {/* Display fetched alerts or loading state */}
+          <AlertDataTable alerts={data?.features || []} loading={isLoading} />
+        </Container>
+      </PageWrapper>
     </Fragment>
   );
 };
