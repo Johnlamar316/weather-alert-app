@@ -22,10 +22,9 @@ import { StyledDataGridContainer } from './common/styled';
 
 interface Props {
   alerts: AlertFeature[];
-  loading: boolean;
 }
 
-const AlertsTable: React.FC<Props> = ({ alerts, loading }) => {
+const AlertsTable: React.FC<Props> = ({ alerts }) => {
   const navigate = useNavigate();
 
   //DataGrid rows
@@ -76,7 +75,6 @@ const AlertsTable: React.FC<Props> = ({ alerts, loading }) => {
         aria-label="Weather alerts table"
         rows={rows}
         columns={columns}
-        loading={loading}
         pageSizeOptions={[10, 20, 100]}
         onRowClick={(params: GridRowParams) => {
           //encoded the id to use in the URL

@@ -68,7 +68,8 @@ const BackgroundImage = styled('img')(() => ({
 }));
 
 const StyledDataGridContainer = styled(Box)(({ theme }) => ({
-  height: 660,
+  height: 500,
+  minHeight: 500,
   maxWidth: '100%',
   backgroundColor: 'rgba(0, 0, 0, 0.20)',
   borderRadius: 20,

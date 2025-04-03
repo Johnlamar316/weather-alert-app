@@ -24,7 +24,7 @@ const Background: React.FC<BackgroundProps> = ({ type = 'image', src }) => {
           Your browser does not support the video tag.
         </BackgroundVideo>
       ) : (
-        <BackgroundImage data-testid="background-image" src={src} alt="background" />
+        <BackgroundImage data-testid="background-image" src={src} alt="background" loading="lazy" />
       )}
     </BaseBackground>
   );

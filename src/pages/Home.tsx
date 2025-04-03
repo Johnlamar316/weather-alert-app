@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { Container, Typography } from '@mui/material';
+import { Container, Skeleton, Typography } from '@mui/material';
 import { useGetAlertsQuery } from 'states/api';
 import AlertDataTable from 'components/AlertDataTable';
 import Background from 'components/Background';
@@ -39,7 +39,7 @@ const Home = () => {
         src={'https://weatherappinterviewbucket.s3.eu-west-2.amazonaws.com/background-img.mp4'}
       />
       <PageWrapper>
-        <Container sx={{ mt: 4 }}>
+        <Container>
           {/* Logo */}
           <Logo />
           {/* Component for filters (e.g. severity, status, etc.) */}
@@ -51,7 +51,11 @@ const Home = () => {
             </Typography>
           )}
           {/* Display fetched alerts or loading state */}
-          <AlertDataTable alerts={data?.features || []} loading={isLoading} />
+          {isLoading ? (
+            <Skeleton variant="rectangular" height={450} />
+          ) : (
+            <AlertDataTable alerts={data?.features || []} />
+          )}
         </Container>
       </PageWrapper>
     </Fragment>
