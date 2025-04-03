@@ -22,6 +22,7 @@ https://www.figma.com/design/v1wLwtBxS3suxWHhGeEvOv/National-Weather-Alert-UI-in
 - Redux Toolkit + RTK Query
 - Material UI
 - React Router DOM
+- Framer Motion
 
 ## Setup
 

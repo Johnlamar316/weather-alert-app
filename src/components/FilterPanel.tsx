@@ -31,19 +31,33 @@ const FilterPanel: React.FC<Props> = ({ onChange }) => {
   };
 
   return (
-    <FilterWrapper>
+    <FilterWrapper aria-label="Weather alert filter panel">
       <DatePicker
         label="Start Date"
         value={start ? dayjs(filters.start) : null}
         onChange={(date) => dispatch(setFilters({ ...filters, start: date?.toISOString() || '' }))}
-        slotProps={{ textField: { size: 'small' } }}
+        slotProps={{
+          textField: {
+            size: 'small',
+            inputProps: {
+              'aria-label': 'Filter by start date',
+            },
+          },
+        }}
       />
 
       <DatePicker
         label="End Date"
         value={end ? dayjs(filters.end) : null}
         onChange={(date) => dispatch(setFilters({ ...filters, end: date?.toISOString() || '' }))}
-        slotProps={{ textField: { size: 'small' } }}
+        slotProps={{
+          textField: {
+            size: 'small',
+            inputProps: {
+              'aria-label': 'Filter by end date',
+            },
+          },
+        }}
       />
 
       <TextField
@@ -81,11 +95,21 @@ const FilterPanel: React.FC<Props> = ({ onChange }) => {
       </TextField>
 
       <Box sx={{ display: 'flex', gap: 1, marginLeft: 'auto' }}>
-        <StyledButton variant="contained" size="medium" onClick={handleApply}>
+        <StyledButton
+          variant="contained"
+          size="medium"
+          onClick={handleApply}
+          aria-label="Apply filters"
+        >
           Apply
         </StyledButton>
 
-        <StyledButton variant="outlined" size="medium" onClick={handleClear}>
+        <StyledButton
+          variant="outlined"
+          size="medium"
+          onClick={handleClear}
+          aria-label="Clear filters"
+        >
           Clear
         </StyledButton>
       </Box>

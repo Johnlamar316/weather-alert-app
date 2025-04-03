@@ -17,9 +17,24 @@ const Logo = () => (
       sx={{
         height: { xs: 60, sm: 80 },
       }}
+      aria-label="App logo"
     />
-    <Typography variant="h5" gutterBottom color="#fff" textAlign="center" data-testid="logo-text">
+    <Typography
+      variant="h5"
+      gutterBottom
+      color="#fff"
+      textAlign="center"
+      data-testid="logo-text"
+      aria-label="National Weather Alerts"
+    >
       National Weather Alerts
+      <Box
+        component="img"
+        src="/assets/red-alert.png"
+        alt="Alert Icon"
+        sx={{ width: 20, height: 20 }}
+        aria-label="red alert icon"
+      />
     </Typography>
   </Box>
 );

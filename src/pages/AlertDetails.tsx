@@ -164,6 +164,7 @@ const AlertDetails = () => {
                     textAlign: 'left',
                     pr: 1,
                   }}
+                  aria-label="Alert Description"
                 >
                   {properties.description.replace(/\*/g, '')}
                 </Typography>

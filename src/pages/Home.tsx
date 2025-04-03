@@ -46,7 +46,7 @@ const Home = () => {
           <FilterPanel onChange={(value: Record<string, string>) => setFilters(value)} />
           {/* Shows error message if fetching data failed */}
           {error && (
-            <Typography role="alert" color="error">
+            <Typography role="alert" aria-live="assertive" color="error">
               Failed to load alerts.
             </Typography>
           )}
