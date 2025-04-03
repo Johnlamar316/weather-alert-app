@@ -49,7 +49,7 @@ const AlertDetails = () => {
   if (isLoading) {
     return (
       <Box sx={{ mt: 6, textAlign: 'center' }}>
-        <CircularProgress />
+        <CircularProgress sx={{ color: '#000' }} />
       </Box>
     );
   }
