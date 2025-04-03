@@ -19,4 +19,4 @@ export const api = createApi({
   }),
 });
 
-export const { useGetAlertsQuery, useLazyGetAlertByIdQuery } = api;
+export const { useGetAlertsQuery, useGetAlertByIdQuery } = api;

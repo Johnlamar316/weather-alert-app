@@ -1,13 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AlertSeverity, AlertStatus } from 'types/enum';
 
-export const initialState = {};
+export interface AlertFilterState {
+  start?: string;
+  end?: string;
+  severity?: AlertSeverity | '';
+  status?: AlertStatus | '';
+}
+
+export const initialState: AlertFilterState = {
+  start: '',
+  end: '',
+  severity: '',
+  status: '',
+};
 
 export const globalSlice = createSlice({
   name: 'global',
   initialState,
-  reducers: {},
+  reducers: {
+    setFilters: (state, action: PayloadAction<AlertFilterState>) => {
+      return { ...state, ...action.payload };
+    },
+    clearFilters: () => initialState,
+  },
 });
 
-export const {} = globalSlice.actions;
+export const { setFilters, clearFilters } = globalSlice.actions;
 
 export default globalSlice.reducer;

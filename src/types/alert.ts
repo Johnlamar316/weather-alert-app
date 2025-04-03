@@ -7,8 +7,8 @@ export interface AlertFeature {
     effective: string;
     expires: string;
     status: string;
-    headline: string;
-    description: string;
+    headline?: string;
+    description?: string;
   };
 }
 

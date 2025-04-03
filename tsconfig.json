@@ -1,4 +1,23 @@
+// tsconfig.json at the root
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "baseUrl": "src", // ✅ baseUrl points to /src
+    "paths": {
+      "pages/*": ["pages/*"],
+      "components/*": ["components/*"],
+      "states/*": ["states/*"],
+      "types/*": ["types/*"]
+    },
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["vite/client", "vitest/globals"]
+  },
+  "include": ["src"]
 }
