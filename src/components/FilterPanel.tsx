@@ -10,9 +10,10 @@ import { FilterWrapper, StyledButton } from './common/styled';
 
 interface Props {
   onChange: (filters: Record<string, string>) => void;
+  isLoading: boolean;
 }
 
-const FilterPanel: React.FC<Props> = ({ onChange }) => {
+const FilterPanel: React.FC<Props> = ({ onChange, isLoading }) => {
   const dispatch = useAppDispatch();
   const filters = useAppSelector((state) => state.global);
   const { start, end, severity, status } = filters;
@@ -100,8 +101,9 @@ const FilterPanel: React.FC<Props> = ({ onChange }) => {
           size="medium"
           onClick={handleApply}
           aria-label="Apply filters"
+          disabled={isLoading}
         >
-          Apply
+          {isLoading ? 'Loading...' : 'Apply'}
         </StyledButton>
 
         <StyledButton
@@ -109,8 +111,9 @@ const FilterPanel: React.FC<Props> = ({ onChange }) => {
           size="medium"
           onClick={handleClear}
           aria-label="Clear filters"
+          disabled={isLoading}
         >
-          Clear
+          {isLoading ? 'Loading...' : 'Clear'}
         </StyledButton>
       </Box>
     </FilterWrapper>
