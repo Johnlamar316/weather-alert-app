@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import AlertsTable from '../../components/AlertDataTable';
+import AlertsTable from 'components/AlertDataTable';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { AlertFeature } from 'types/alert';
@@ -39,7 +39,7 @@ describe('AlertsTable', () => {
   it('renders alerts data to the table', () => {
     render(
       <BrowserRouter>
-        <AlertsTable alerts={mockAlerts} loading={false} />
+        <AlertsTable alerts={mockAlerts} />
       </BrowserRouter>
     );
 
@@ -56,7 +56,7 @@ describe('AlertsTable', () => {
   it('navigates when a row is clicked', () => {
     render(
       <BrowserRouter>
-        <AlertsTable alerts={mockAlerts} loading={false} />
+        <AlertsTable alerts={mockAlerts} />
       </BrowserRouter>
     );
 
