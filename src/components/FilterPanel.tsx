@@ -103,7 +103,9 @@ const FilterPanel: React.FC<Props> = ({ onChange, isLoading }) => {
           aria-label="Apply filters"
           disabled={isLoading}
         >
-          {isLoading ? 'Loading...' : 'Apply'}
+          <Box component="span" sx={{ color: isLoading ? '#fff' : 'inherit' }}>
+            {isLoading ? 'Loading...' : 'Apply'}
+          </Box>
         </StyledButton>
 
         <StyledButton
@@ -113,7 +115,9 @@ const FilterPanel: React.FC<Props> = ({ onChange, isLoading }) => {
           aria-label="Clear filters"
           disabled={isLoading}
         >
-          {isLoading ? 'Loading...' : 'Clear'}
+          <Box component="span" sx={{ color: isLoading ? '#fff' : 'inherit' }}>
+            {isLoading ? 'Loading...' : 'Clear'}
+          </Box>
         </StyledButton>
       </Box>
     </FilterWrapper>
