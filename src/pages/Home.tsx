@@ -32,13 +32,6 @@ const Home = () => {
   //Fetches alert data based on filters from the RTK Query hook.
   const { data, error, isLoading } = useGetAlertsQuery({ ...filters, limit });
 
-  const handleFilterChange = (newFilters: Record<string, string>, newLimit?: number) => {
-    setFilters(newFilters);
-    if (newLimit !== undefined) {
-      setLimit(newLimit);
-    }
-  };
-
   return (
     <Fragment>
       {/* Background video */}
@@ -55,7 +48,7 @@ const Home = () => {
             </Box>
             {/* Component for filters (e.g. severity, status, etc.) */}
             <FilterPanel
-              onChange={(newFilters) => handleFilterChange(newFilters)}
+              onChange={(value: Record<string, string>) => setFilters(value)}
               isLoading={isLoading}
             />
             {/* Shows error message if fetching data failed */}
@@ -68,11 +61,7 @@ const Home = () => {
             {isLoading ? (
               <Skeleton variant="rectangular" height={450} />
             ) : (
-              <AlertDataTable
-                alerts={data?.features || []}
-                limit={limit}
-                setLimit={(newLimit) => handleFilterChange(filters, newLimit)}
-              />
+              <AlertDataTable alerts={data?.features || []} limit={limit} setLimit={setLimit} />
             )}
           </Container>
         </main>

@@ -9,12 +9,16 @@ export const api = createApi({
   reducerPath: 'api',
   tagTypes: [],
   endpoints: (build) => ({
-    getAlerts: build.query<AlertResponse, { params?: Record<string, string>; limit?: number }>({
-      query: ({ params, limit }) => {
-        const queryParams = new URLSearchParams({
-          ...params,
-          limit: limit?.toString() ?? '10',
-        });
+    getAlerts: build.query<AlertResponse, Record<string, string | number | undefined>>({
+      query: (filtersAndLimit) => {
+        // console.log('filters:::', params, limit);
+        const queryParams = new URLSearchParams();
+
+        for (const [key, value] of Object.entries(filtersAndLimit)) {
+          if (value !== undefined) {
+            queryParams.append(key, String(value));
+          }
+        }
 
         return {
           url: `${CUSTOM_URL}?${queryParams.toString()}`,
