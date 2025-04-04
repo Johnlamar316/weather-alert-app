@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { AlertResponse } from 'types/alert';
+import { CUSTOM_URL } from 'utils';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -7,14 +9,20 @@ export const api = createApi({
   reducerPath: 'api',
   tagTypes: [],
   endpoints: (build) => ({
-    getAlerts: build.query({
-      query: (params) => ({
-        url: `alerts`,
-        params,
-      }),
+    getAlerts: build.query<AlertResponse, { params?: Record<string, string>; limit?: number }>({
+      query: ({ params, limit }) => {
+        const queryParams = new URLSearchParams({
+          ...params,
+          limit: limit?.toString() ?? '10',
+        });
+
+        return {
+          url: `${CUSTOM_URL}?${queryParams.toString()}`,
+        };
+      },
     }),
     getAlertById: build.query({
-      query: (id: string) => `alerts/${id}`,
+      query: (id: string) => `${CUSTOM_URL}/${id}`,
     }),
   }),
 });

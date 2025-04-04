@@ -6,6 +6,7 @@ import { formatToLocal } from '../utils';
 import { Chip } from '@mui/material';
 import { SeverityColor } from 'types/enum';
 import { StyledDataGridContainer } from './common/styled';
+import { CustomFooter } from 'components/CustomFooter';
 
 /**
  * AlertsTable is a data table component that displays weather alert data.
@@ -22,9 +23,11 @@ import { StyledDataGridContainer } from './common/styled';
 
 interface Props {
   alerts: AlertFeature[];
+  limit: number | undefined;
+  setLimit: (limit: number | undefined) => void;
 }
 
-const AlertsTable: React.FC<Props> = ({ alerts }) => {
+const AlertsTable: React.FC<Props> = ({ alerts, limit, setLimit }) => {
   const navigate = useNavigate();
 
   //DataGrid rows
@@ -68,7 +71,7 @@ const AlertsTable: React.FC<Props> = ({ alerts }) => {
     { field: 'expires', headerName: 'Expires', width: 180 },
     { field: 'status', headerName: 'Status', width: 120 },
   ];
-
+  
   return (
     <StyledDataGridContainer>
       <DataGrid
@@ -76,10 +79,25 @@ const AlertsTable: React.FC<Props> = ({ alerts }) => {
         rows={rows}
         columns={columns}
         pageSizeOptions={[10, 20, 100]}
+        initialState={{
+          pagination: {
+            paginationModel: { pageSize: limit ?? 10, page: 0 },
+          },
+        }}
         onRowClick={(params: GridRowParams) => {
           //encoded the id to use in the URL
           const encodedId = encodeURIComponent(params.id.toString());
           navigate(`/alert/${encodedId}`);
+        }}
+        slots={{
+          footer: () => (
+            <CustomFooter
+              limit={limit}
+              onLimitChange={(newLimit) => {
+                setLimit(newLimit);
+              }}
+            />
+          ),
         }}
         sx={{
           backgroundColor: 'rgba(255, 255, 255, 0.05)',

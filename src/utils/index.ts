@@ -1,6 +1,8 @@
 import { AlertSeverity } from 'types/enum';
 import { AlertFeature } from 'types/alert';
 
+const CUSTOM_URL = 'alerts';
+
 // Enum-based severity gradient color map
 const severityGradientTopColor: Record<AlertSeverity, string> = {
   [AlertSeverity.Extreme]: '#d32f2f',
@@ -64,4 +66,11 @@ const mockAlerts: AlertFeature[] = [
   },
 ];
 
-export { formatToLocal, cleanFilterFunc, severityGradientTopColor, severityIconMap, mockAlerts };
+export {
+  CUSTOM_URL,
+  formatToLocal,
+  cleanFilterFunc,
+  severityGradientTopColor,
+  severityIconMap,
+  mockAlerts,
+};

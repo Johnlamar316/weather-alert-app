@@ -16,4 +16,7 @@ export interface AlertFeature {
 
 export interface AlertResponse {
   features: AlertFeature[];
+  pagination?: {
+    next?: string;
+  };
 }

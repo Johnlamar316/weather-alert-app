@@ -94,6 +94,11 @@ describe('Home page', () => {
     renderWithRouter(<Home />);
     fireEvent.click(screen.getByTestId('filter-panel'));
 
-    expect(mockUseGetAlertsQuery).toHaveBeenCalledWith({ severity: 'Extreme' });
+    expect(mockUseGetAlertsQuery).toHaveBeenCalledWith(
+      expect.objectContaining({
+        severity: 'Extreme',
+        limit: 10,
+      })
+    );
   });
 });

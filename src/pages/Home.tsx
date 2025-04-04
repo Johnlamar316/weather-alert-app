@@ -27,9 +27,10 @@ import PageWrapper from 'components/PageWrapper';
 const Home = () => {
   //Local state for storing filter values selected by the user.
   const [filters, setFilters] = useState<Record<string, string>>({});
+  const [limit, setLimit] = useState<number | undefined>(10);
 
   //Fetches alert data based on filters from the RTK Query hook.
-  const { data, error, isLoading } = useGetAlertsQuery(filters);
+  const { data, error, isLoading } = useGetAlertsQuery({ ...filters, limit });
 
   return (
     <Fragment>
@@ -60,7 +61,7 @@ const Home = () => {
             {isLoading ? (
               <Skeleton variant="rectangular" height={450} />
             ) : (
-              <AlertDataTable alerts={data?.features || []} />
+              <AlertDataTable alerts={data?.features || []} limit={limit} setLimit={setLimit} />
             )}
           </Container>
         </main>
