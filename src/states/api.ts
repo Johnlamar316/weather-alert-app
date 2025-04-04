@@ -11,7 +11,6 @@ export const api = createApi({
   endpoints: (build) => ({
     getAlerts: build.query<AlertResponse, Record<string, string | number | undefined>>({
       query: (filtersAndLimit) => {
-        // console.log('filters:::', params, limit);
         const queryParams = new URLSearchParams();
 
         for (const [key, value] of Object.entries(filtersAndLimit)) {
