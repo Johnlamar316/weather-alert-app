@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
+import { mockAlerts } from 'utils/index';
 import AlertsTable from 'components/AlertDataTable';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { AlertFeature } from 'types/alert';
 import { formatToLocal } from '../../utils';
 
 const mockNavigate = vi.fn();
@@ -15,21 +15,6 @@ vi.mock('react-router-dom', async () => {
     useNavigate: () => mockNavigate,
   };
 });
-
-// Sample data
-const mockAlerts: AlertFeature[] = [
-  {
-    properties: {
-      id: 'random-Id',
-      event: 'Tornado Warning',
-      severity: 'Extreme',
-      areaDesc: 'Los Angeles, California',
-      effective: '2025-04-03T12:00:00Z',
-      expires: '2025-04-03T14:00:00Z',
-      status: 'Actual',
-    },
-  },
-];
 
 describe('AlertsTable', () => {
   beforeEach(() => {

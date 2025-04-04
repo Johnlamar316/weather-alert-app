@@ -143,6 +143,7 @@ const AlertDetails = () => {
 
                 <Typography
                   variant="body2"
+                  data-testid="alert-dates"
                   sx={{
                     textAlign: 'left',
                     fontSize: '0.7rem',

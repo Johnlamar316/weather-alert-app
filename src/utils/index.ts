@@ -1,4 +1,5 @@
 import { AlertSeverity } from 'types/enum';
+import { AlertFeature } from 'types/alert';
 
 // Enum-based severity gradient color map
 const severityGradientTopColor: Record<AlertSeverity, string> = {
@@ -44,4 +45,23 @@ const cleanFilterFunc = (
   );
 };
 
-export { formatToLocal, cleanFilterFunc, severityGradientTopColor, severityIconMap };
+//mock data
+const mockAlerts: AlertFeature[] = [
+  {
+    properties: {
+      id: 'random-Id',
+      event: 'Tornado Warning',
+      severity: 'Extreme',
+      areaDesc: 'Los Angeles, California',
+      effective: '2025-04-03T12:00:00Z',
+      expires: '2025-04-03T14:00:00Z',
+      sent: '4/3/2025',
+      status: 'Actual',
+      headline: 'Severe weather alert',
+      description: 'Tornado warning for Los Angeles area',
+      senderName: 'NWS Charleston WV',
+    },
+  },
+];
+
+export { formatToLocal, cleanFilterFunc, severityGradientTopColor, severityIconMap, mockAlerts };

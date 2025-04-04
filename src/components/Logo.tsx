@@ -9,17 +9,6 @@ const Logo = () => (
       mb: 3,
     }}
   >
-    {/*<Box*/}
-    {/*  data-testid="logo-image"*/}
-    {/*  component="img"*/}
-    {/*  src="/assets/logo.png"*/}
-    {/*  alt="App Logo"*/}
-    {/*  sx={{*/}
-    {/*    height: { xs: 60, sm: 80 },*/}
-    {/*  }}*/}
-    {/*  aria-label="App logo"*/}
-    {/*  loading="lazy"*/}
-    {/*/>*/}
     <Typography
       variant="h5"
       gutterBottom

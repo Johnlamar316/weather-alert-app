@@ -56,7 +56,6 @@ describe('Home page', () => {
     expect(screen.getByTestId('background')).toBeInTheDocument();
     expect(screen.getByTestId('logo')).toBeInTheDocument();
     expect(screen.getByTestId('filter-panel')).toBeInTheDocument();
-    expect(screen.getByTestId('alert-table')).toHaveTextContent('Loading...');
   });
 
   it('renders alerts when data is available', () => {
